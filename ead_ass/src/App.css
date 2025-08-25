@@ -217,6 +217,7 @@ button:disabled {
 .wicket-btn {
   background: #333333;
   min-width: 80px;
+  border-radius: 30px;
 }
 
 .wicket-btn:hover {
@@ -226,6 +227,7 @@ button:disabled {
 .extra-btn {
   background: #333333;
   min-width: 80px;
+  border-radius: 30px;
 }
 
 .extra-btn:hover {
@@ -235,11 +237,13 @@ button:disabled {
 .control-btn {
   background: #333333;
   min-width: 100px;
+  border-radius: 30px;
 }
 
 .reset-btn {
   background: #333333;
   min-width: 100px;
+  border-radius: 30px;
 }
 
 /* Status message */
