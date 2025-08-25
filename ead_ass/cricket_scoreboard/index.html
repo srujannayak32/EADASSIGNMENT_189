@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Scoreboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cricket Scoreboard</h1>
+        
+        <div class="scoreboard">
+            <div class="team-score">
+                <h2>India: <span id="runs">0</span>/<span id="wickets">0</span></h2>
+                <p><span id="overs">0.0</span> Overs</p>
+            </div>
+            
+            <div class="batsmen">
+                <div id="batsman1" class="batsman striker">
+                    <span class="batsman-name">Rahul</span>: <span id="rahul-score">0</span><span class="striker-mark">*</span>
+                </div>
+                <div id="batsman2" class="batsman">
+                    <span class="batsman-name">Rohit</span>: <span id="rohit-score">0</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <div class="control-section">
+                <h3>Runs</h3>
+                <div class="buttons">
+                    <button class="run-btn" onclick="addRuns(1)">1</button>
+                    <button class="run-btn" onclick="addRuns(2)">2</button>
+                    <button class="run-btn" onclick="addRuns(3)">3</button>
+                    <button class="run-btn" onclick="addRuns(4)">4</button>
+                    <button class="run-btn" onclick="addRuns(6)">6</button>
+                </div>
+            </div>
+            
+            <div class="control-section">
+                <h3>Wickets</h3>
+                <div class="buttons">
+                    <button class="wicket-btn" onclick="wicket()">Wicket</button>
+                    <button class="wicket-btn" onclick="lbw()">LBW</button>
+                </div>
+            </div>
+            
+            <div class="control-section">
+                <h3>Extras</h3>
+                <div class="buttons">
+                    <button class="extra-btn" onclick="wide()">Wide</button>
+                    <button class="extra-btn" onclick="noBall()">No Ball</button>
+                    <button class="extra-btn" onclick="freeHit()">Free Hit</button>
+                    <button class="extra-btn" onclick="bye()">Bye</button>
+                    <button class="extra-btn" onclick="legBye()">Leg Bye</button>
+                </div>
+            </div>
+            
+            <div class="control-section">
+                <h3>Controls</h3>
+                <div class="buttons">
+                    <button class="control-btn" onclick="switchStriker()">Switch Striker</button>
+                    <button class="reset-btn" onclick="resetScoreboard()">Reset</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status-message" id="status-message">
+            <!-- Status messages will appear here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

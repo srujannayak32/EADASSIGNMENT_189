@@ -1,0 +1,305 @@
+:root {
+  --primary-color: #111111;
+  --secondary-color: #1a1a1a;
+  --highlight-color: #00ffcc;
+  --danger-color: #ff4444;
+  --light-color: #ffffff;
+  --text-color: #ffffff;
+  --dark-color: #222222;
+  --border-radius: 4px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --glow-effect: 0 0 10px rgba(0, 255, 204, 0.7);
+  --border-glow: 0 0 5px #00ffcc;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #000000;
+  color: var(--text-color);
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Scoreboard styling */
+.scoreboard {
+  background: #111111;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #222222;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.team-score {
+  margin-bottom: 1.5rem;
+  position: relative;
+  text-align: center;
+}
+
+.team-score h2 {
+  font-size: 5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #00ffcc;
+  text-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
+}
+
+.team-score p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.batsmen {
+  display: flex;
+  justify-content: space-around;
+  margin: 1.5rem auto;
+  gap: 1rem;
+}
+
+.batsman {
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  background: #1a1a1a;
+  flex: 1;
+  border: 1px solid #333333;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.batsman.striker {
+  background: #1a1a1a;
+  border: 1px solid #00ffcc;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
+}
+
+.batsman-name {
+  font-weight: 500;
+  font-size: 1rem;
+  display: inline;
+  margin-right: 5px;
+}
+
+.striker-mark {
+  margin-left: 2px;
+  color: #00ffcc;
+  font-weight: bold;
+}
+
+.free-hit-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #333333;
+  color: #00ffcc;
+  padding: 5px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border: 1px solid #00ffcc;
+}
+
+/* Section headings */
+.section-title {
+  color: #00ffcc;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Controls styling */
+.controls {
+  max-width: 650px;
+  margin: 0 auto 2rem;
+}
+
+.control-section {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.runs-section {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+button {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 50px;
+  background: #333333;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  min-width: 45px;
+}
+
+button:hover {
+  background: #444444;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.run-btn {
+  background: #333333;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.run-btn:hover {
+  background: #444444;
+}
+
+.run-btn:active {
+  background: #00ffcc;
+  color: #000;
+}
+
+.wicket-btn {
+  background: #333333;
+  min-width: 80px;
+}
+
+.wicket-btn:hover {
+  background: #444444;
+}
+
+.extra-btn {
+  background: #333333;
+  min-width: 80px;
+}
+
+.extra-btn:hover {
+  background: #444444;
+}
+
+.control-btn {
+  background: #333333;
+  min-width: 100px;
+}
+
+.reset-btn {
+  background: #333333;
+  min-width: 100px;
+}
+
+/* Status message */
+.status-message {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1rem;
+  background: #1a1a1a;
+  border-radius: 4px;
+  font-weight: 500;
+  animation: fadeIn 0.3s;
+  display: inline-block;
+  border: 1px solid #333333;
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.all-out-message {
+  color: #ff4444;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .team-score h2 {
+    font-size: 4rem;
+  }
+  
+  .batsmen {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .batsman {
+    width: 100%;
+  }
+  
+  .container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-score h2 {
+    font-size: 3.5rem;
+  }
+  
+  button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
