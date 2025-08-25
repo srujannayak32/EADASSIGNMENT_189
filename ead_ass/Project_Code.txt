@@ -1,0 +1,768 @@
+HTML
+-----
+// File: ead_ass/index.html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Cricket Scoreboard Web Application" />
+    <meta name="author" content="Cricket Scoreboard Team" />
+    <title>Cricket Scoreboard</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+
+CSS
+---
+// File: ead_ass/src/index.css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #000000;
+}
+
+button {
+  font-family: inherit;
+}
+
+
+// File: ead_ass/src/App.css
+:root {
+  --primary-color: #111111;
+  --secondary-color: #1a1a1a;
+  --highlight-color: #00ffcc;
+  --danger-color: #ff4444;
+  --light-color: #ffffff;
+  --text-color: #ffffff;
+  --dark-color: #222222;
+  --border-radius: 4px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --glow-effect: 0 0 10px rgba(0, 255, 204, 0.7);
+  --border-glow: 0 0 5px #00ffcc;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #000000;
+  color: var(--text-color);
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Scoreboard styling */
+.scoreboard {
+  background: #111111;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #222222;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.team-score {
+  margin-bottom: 1.5rem;
+  position: relative;
+  text-align: center;
+}
+
+.team-score h2 {
+  font-size: 5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #00ffcc;
+  text-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
+}
+
+.team-score p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.batsmen {
+  display: flex;
+  justify-content: space-around;
+  margin: 1.5rem auto;
+  gap: 1rem;
+}
+
+.batsman {
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  background: #1a1a1a;
+  flex: 1;
+  border: 1px solid #333333;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.batsman.striker {
+  background: #1a1a1a;
+  border: 1px solid #00ffcc;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
+}
+
+.batsman-name {
+  font-weight: 500;
+  font-size: 1rem;
+  display: inline;
+  margin-right: 5px;
+}
+
+.striker-mark {
+  margin-left: 2px;
+  color: #00ffcc;
+  font-weight: bold;
+}
+
+.free-hit-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #333333;
+  color: #00ffcc;
+  padding: 5px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border: 1px solid #00ffcc;
+}
+
+/* Section headings */
+.section-title {
+  color: #00ffcc;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Controls styling */
+.controls {
+  max-width: 650px;
+  margin: 0 auto 2rem;
+}
+
+.control-section {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.runs-section {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+button {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 50px;
+  background: #333333;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  min-width: 45px;
+}
+
+button:hover {
+  background: #444444;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.run-btn {
+  background: #333333;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.run-btn:hover {
+  background: #444444;
+}
+
+.run-btn:active {
+  background: #00ffcc;
+  color: #000;
+}
+
+.wicket-btn {
+  background: #333333;
+  min-width: 80px;
+  border-radius: 30px;
+}
+
+.wicket-btn:hover {
+  background: #444444;
+}
+
+.extra-btn {
+  background: #333333;
+  min-width: 80px;
+  border-radius: 30px;
+}
+
+.extra-btn:hover {
+  background: #444444;
+}
+
+.control-btn {
+  background: #333333;
+  min-width: 100px;
+  border-radius: 30px;
+}
+
+.reset-btn {
+  background: #333333;
+  min-width: 100px;
+  border-radius: 30px;
+}
+
+/* Status message */
+.status-message {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1rem;
+  background: #1a1a1a;
+  border-radius: 4px;
+  font-weight: 500;
+  animation: fadeIn 0.3s;
+  display: inline-block;
+  border: 1px solid #333333;
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.all-out-message {
+  color: #ff4444;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .team-score h2 {
+    font-size: 4rem;
+  }
+  
+  .batsmen {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .batsman {
+    width: 100%;
+  }
+  
+  .container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-score h2 {
+    font-size: 3.5rem;
+  }
+  
+  button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+
+JS
+--
+// File: ead_ass/src/main.jsx
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+
+
+// File: ead_ass/src/App.jsx
+import { useState } from 'react'
+import './App.css'
+import Scoreboard from './components/Scoreboard'
+import Controls from './components/Controls'
+
+function App() {
+  // Game state
+  const [runs, setRuns] = useState(0)
+  const [wickets, setWickets] = useState(0)
+  const [balls, setBalls] = useState(0)
+  const [overs, setOvers] = useState(0)
+  const [rahulScore, setRahulScore] = useState(0)
+  const [rohitScore, setRohitScore] = useState(0)
+  const [isRahulStriker, setIsRahulStriker] = useState(true)
+  const [isFreeHit, setIsFreeHit] = useState(false)
+  const [statusMessage, setStatusMessage] = useState('')
+
+  // Calculate overs display format (e.g., 5.3)
+  const oversDisplay = `${overs}.${balls}`
+
+  // Handle runs scored
+  const handleRunsClick = (runsScored) => {
+    // Add runs to team total
+    setRuns(runs + runsScored)
+
+    // Add runs to striker's score
+    if (isRahulStriker) {
+      setRahulScore(rahulScore + runsScored)
+    } else {
+      setRohitScore(rohitScore + runsScored)
+    }
+
+    // For odd runs (1,3), switch striker
+    if (runsScored % 2 === 1) {
+      setIsRahulStriker(!isRahulStriker)
+    }
+
+    // Increment ball count for valid deliveries
+    incrementBallCount()
+
+    // Reset free hit status after a valid delivery
+    if (isFreeHit) {
+      setIsFreeHit(false)
+      setStatusMessage('')
+    }
+  }
+
+  // Handle wicket
+  const handleWicketClick = () => {
+    // Don't allow wickets on free hit
+    if (isFreeHit) {
+      return
+    }
+
+    // Increment wicket count (max 10)
+    if (wickets < 10) {
+      const newWickets = wickets + 1
+      setWickets(newWickets)
+      
+      // Reset striker to Rahul (simulating new batsman)
+      if (isRahulStriker) {
+        setRahulScore(0)
+      } else {
+        setRohitScore(0)
+      }
+      setIsRahulStriker(true)
+      
+      // Increment ball count
+      incrementBallCount()
+      
+      // Check if all out
+      if (newWickets >= 10) {
+        setStatusMessage('ALL OUT!')
+      } else {
+        setStatusMessage('Wicket!')
+      }
+    }
+  }
+
+  // Handle LBW
+  const handleLBWClick = () => {
+    // Same as wicket but with different status message
+    if (isFreeHit) {
+      return
+    }
+
+    if (wickets < 10) {
+      const newWickets = wickets + 1
+      setWickets(newWickets)
+      
+      if (isRahulStriker) {
+        setRahulScore(0)
+      } else {
+        setRohitScore(0)
+      }
+      setIsRahulStriker(true)
+      
+      incrementBallCount()
+      
+      // Check if all out
+      if (newWickets >= 10) {
+        setStatusMessage('ALL OUT!')
+      } else {
+        setStatusMessage('LBW!')
+      }
+    }
+  }
+
+  // Handle wide
+  const handleWideClick = () => {
+    // Add 1 run to team total only
+    setRuns(runs + 1)
+    // Do not increment ball count
+    setStatusMessage('Wide!')
+  }
+
+  // Handle no ball
+  const handleNoBallClick = () => {
+    // Add 1 run to team total
+    setRuns(runs + 1)
+    
+    // Add 1 run to striker's score
+    if (isRahulStriker) {
+      setRahulScore(rahulScore + 1)
+    } else {
+      setRohitScore(rohitScore + 1)
+    }
+    
+    // Do not increment ball count
+    setStatusMessage('No Ball!')
+  }
+
+  // Handle free hit
+  const handleFreeHitClick = () => {
+    // Add 1 run to team total
+    setRuns(runs + 1)
+    
+    // Set next delivery as free hit
+    setIsFreeHit(true)
+    
+    setStatusMessage('Free Hit! Next ball is a Free Hit')
+  }
+
+  // Handle bye
+  const handleByeClick = () => {
+    // Add 1 run to team total only
+    setRuns(runs + 1)
+    
+    // Increment ball count
+    incrementBallCount()
+    
+    setStatusMessage('Bye!')
+  }
+
+  // Handle leg bye
+  const handleLegByeClick = () => {
+    // Add 1 run to team total only
+    setRuns(runs + 1)
+    
+    // Increment ball count
+    incrementBallCount()
+    
+    setStatusMessage('Leg Bye!')
+  }
+
+  // Switch striker manually
+  const handleSwitchStrikerClick = () => {
+    setIsRahulStriker(!isRahulStriker)
+    setStatusMessage('Strikers Switched!')
+  }
+
+  // Reset everything
+  const handleResetClick = () => {
+    setRuns(0)
+    setWickets(0)
+    setBalls(0)
+    setOvers(0)
+    setRahulScore(0)
+    setRohitScore(0)
+    setIsRahulStriker(true)
+    setIsFreeHit(false)
+    setStatusMessage('Scoreboard Reset!')
+  }
+
+  // Helper function to increment ball count and handle over transitions
+  const incrementBallCount = () => {
+    // If we're already at 10 wickets, don't increment ball count
+    if (wickets >= 10) {
+      return
+    }
+
+    // If we're on 5 balls (0-indexed: 0,1,2,3,4,5), increment over
+    if (balls === 5) {
+      setOvers(overs + 1)
+      setBalls(0)
+      // Switch striker at end of over
+      setIsRahulStriker(!isRahulStriker)
+    } else {
+      // Otherwise just increment the ball count
+      setBalls(balls + 1)
+    }
+  }
+
+  return (
+    <div className="container">
+      <h1>Cricket Scoreboard</h1>
+      
+      <div className="scoreboard">
+        <div className="team-score">
+          <h2>{runs}/{wickets}</h2>
+          <p>Overs: {oversDisplay}</p>
+          {isFreeHit && <div className="free-hit-indicator">FREE HIT</div>}
+        </div>
+        
+        <div className="batsmen">
+          <div className={`batsman ${isRahulStriker ? 'striker' : ''}`}>
+            Rahul{isRahulStriker && ' *'}: {rahulScore}
+          </div>
+          <div className={`batsman ${!isRahulStriker ? 'striker' : ''}`}>
+            Rohit{!isRahulStriker && ' *'}: {rohitScore}
+          </div>
+        </div>
+
+        <div className="runs-section">
+          <h3 className="section-title">Runs</h3>
+          <div className="buttons">
+            <button className="run-btn" onClick={() => handleRunsClick(1)}>1</button>
+            <button className="run-btn" onClick={() => handleRunsClick(2)}>2</button>
+            <button className="run-btn" onClick={() => handleRunsClick(3)}>3</button>
+            <button className="run-btn" onClick={() => handleRunsClick(4)}>4</button>
+            <button className="run-btn" onClick={() => handleRunsClick(6)}>6</button>
+          </div>
+        </div>
+      </div>
+      
+      <div className="control-section">
+        <h3 className="section-title">Wickets</h3>
+        <div className="buttons">
+          <button className="wicket-btn" onClick={handleWicketClick} disabled={isFreeHit}>Wicket</button>
+          <button className="wicket-btn" onClick={handleLBWClick} disabled={isFreeHit}>LBW</button>
+        </div>
+      </div>
+      
+      <div className="control-section">
+        <h3 className="section-title">Extras</h3>
+        <div className="buttons">
+          <button className="extra-btn" onClick={handleWideClick}>Wide</button>
+          <button className="extra-btn" onClick={handleNoBallClick}>No Ball</button>
+          <button className="extra-btn" onClick={handleByeClick}>Bye</button>
+          <button className="extra-btn" onClick={handleLegByeClick}>Leg Bye</button>
+        </div>
+        <div className="buttons" style={{ marginTop: '10px' }}>
+          <button className="extra-btn" onClick={handleFreeHitClick}>Free Hit</button>
+        </div>
+      </div>
+      
+      <div className="control-section">
+        <h3 className="section-title">Controls</h3>
+        <div className="buttons">
+          <button className="control-btn" onClick={handleSwitchStrikerClick}>Switch</button>
+          <button className="reset-btn" onClick={handleResetClick}>Reset</button>
+        </div>
+      </div>
+      
+      {statusMessage && (
+        <div className="status-message">
+          {statusMessage}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default App
+
+
+// File: ead_ass/src/components/Scoreboard.jsx
+import React from 'react';
+
+const Scoreboard = ({ 
+  runs, 
+  wickets, 
+  overs, 
+  rahulScore, 
+  rohitScore, 
+  isRahulStriker, 
+  isFreeHit 
+}) => {
+  const isAllOut = wickets >= 10;
+  
+  return (
+    <div className="scoreboard">
+      <div className="cricket-ball"></div>
+      <div className="team-score">
+        <h2>{runs}/{wickets}</h2>
+        <p>{overs} Overs</p>
+        {isAllOut && <div className="all-out-message">All Out!</div>}
+        {isFreeHit && <div className="free-hit-indicator">FREE HIT</div>}
+      </div>
+      
+      <div className="batsmen">
+        <div className={`batsman ${isRahulStriker ? 'striker' : ''}`}>
+          <span className="batsman-name">Rahul</span>: {rahulScore}
+          {isRahulStriker && <span className="striker-mark">*</span>}
+        </div>
+        <div className={`batsman ${!isRahulStriker ? 'striker' : ''}`}>
+          <span className="batsman-name">Rohit</span>: {rohitScore}
+          {!isRahulStriker && <span className="striker-mark">*</span>}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Scoreboard;
+
+
+// File: ead_ass/src/components/Controls.jsx
+import React from 'react';
+
+const Controls = ({ 
+  onRunsClick, 
+  onWicketClick, 
+  onLBWClick,
+  onWideClick,
+  onNoBallClick,
+  onFreeHitClick,
+  onByeClick,
+  onLegByeClick,
+  onSwitchStrikerClick,
+  onResetClick,
+  isFreeHit
+}) => {
+  return (
+    <div className="controls">
+      <div className="control-section">
+        <h3>Runs</h3>
+        <div className="buttons">
+          <button className="run-btn" onClick={() => onRunsClick(1)}>1</button>
+          <button className="run-btn" onClick={() => onRunsClick(2)}>2</button>
+          <button className="run-btn" onClick={() => onRunsClick(3)}>3</button>
+          <button className="run-btn" onClick={() => onRunsClick(4)}>4</button>
+          <button className="run-btn" onClick={() => onRunsClick(6)}>6</button>
+        </div>
+      </div>
+      
+      <div className="control-section">
+        <h3>Wickets</h3>
+        <div className="buttons">
+          <button 
+            className="wicket-btn" 
+            onClick={onWicketClick}
+            disabled={isFreeHit}
+          >
+            Wicket
+          </button>
+          <button 
+            className="wicket-btn" 
+            onClick={onLBWClick}
+            disabled={isFreeHit}
+          >
+            LBW
+          </button>
+        </div>
+      </div>
+      
+      <div className="control-section">
+        <h3>Extras</h3>
+        <div className="buttons">
+          <button className="extra-btn" onClick={onWideClick}>Wide</button>
+          <button className="extra-btn" onClick={onNoBallClick}>No Ball</button>
+          <button className="extra-btn" onClick={onFreeHitClick}>Free Hit</button>
+          <button className="extra-btn" onClick={onByeClick}>Bye</button>
+          <button className="extra-btn" onClick={onLegByeClick}>Leg Bye</button>
+        </div>
+      </div>
+      
+      <div className="control-section">
+        <h3>Controls</h3>
+        <div className="buttons">
+          <button className="control-btn" onClick={onSwitchStrikerClick}>Switch Striker</button>
+          <button className="reset-btn" onClick={onResetClick}>Reset</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Controls;
